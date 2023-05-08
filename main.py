@@ -1,4 +1,16 @@
 dictionary_file = open("[path to words.txt file]", "r")
+import json
+
+with open('dictionary.txt') as f:
+	data = f.read()
+
+print("Data type before reconstruction : ", type(data))
+	
+js = json.loads(data)
+
+print("Data type after reconstruction : ", type(js))
+print(js)
+
 
 dictionary = []
 for word in dictionary_file:
