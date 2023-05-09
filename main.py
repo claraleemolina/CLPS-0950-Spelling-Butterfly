@@ -54,6 +54,7 @@ posDown = int(window.winfo_screenheight() / 2 - winHeight / 2)
 window.geometry("+{}+{}".format(posRight, posDown))
 window.mainloop()
 
+
 # gameplay
 
 
