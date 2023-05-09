@@ -36,23 +36,31 @@ def spelling_butterfly(seven_letters, center_letter):
 
 print(spelling_butterfly(seven_letters, center_letter))
 
+# New window code
 # Window of Rules #
+
+
 from tkinter import *
-window = Tk()
-window.title("Game Rules")
-window.configure(bg='white')
-window.mainloop()
-import Tkinter as Tk
-label = Tk.Label(None, text='Blah blah blah', font=('Times', '18'),fg='blue')
-label.pack()
-label.mainloop()
-# move window center
-winWidth = window.winfo_reqwidth()
-winHeight = window.winfo_reqheight()
-posRight = int(window.winfo_screenwidth() / 2 - winWidth / 2)
-posDown = int(window.winfo_screenheight() / 2 - winHeight / 2)
-window.geometry("+{}+{}".format(posRight, posDown))
-window.mainloop()
+
+
+#Create an instance of tkinter frame
+win= Tk()
+
+
+#Set the geometry
+win.geometry("750x280")
+
+
+#Create a canvas object
+canvas= Canvas(win, width= 1000, height= 750, bg="white")
+
+
+#Add a text in Canvas
+canvas.create_text(300, 50, text="GAME RULES", fill="black", font=('Helvetica 15 bold'))
+canvas.pack()
+
+
+win.mainloop()
 
 
 # gameplay
