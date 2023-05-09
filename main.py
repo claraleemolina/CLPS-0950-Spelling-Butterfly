@@ -55,3 +55,18 @@ window.geometry("+{}+{}".format(posRight, posDown))
 window.mainloop()
 
 # gameplay
+
+
+correct_guesses = []
+if guess in correct_words:
+    if center_letter not in guess:
+        print("Missing center letter")
+    elif len(guess) > 3:
+        print("Too short")
+    elif not any(n in bad_letters for n in guess) and 'n' not in guess and '-' not in guess:
+        print("Bad letters")
+    else:
+        print("Good!")
+        correct_guesses.append(guess)
+else:
+    print("Not in word list")
