@@ -8,19 +8,20 @@ dictionary_file = open("words.txt", "r")
 letter_generator = string.ascii_lowercase
 seven_letters = random.sample(letter_generator, k=7)
 center_letter = random.choice(seven_letters)
+print(seven_letters, center_letter)
 
 # create answer function
 
+dictionary = []
+for word in dictionary_file:
+    dictionary.append(str(word.lower()[:-1]))
+
+alphabet = list(string.ascii_lowercase)
+
+bad_letters = [n for n in alphabet if n not in seven_letters]
+
 
 def spelling_butterfly(seven_letters, center_letter):
-
-    dictionary = []
-    for word in dictionary_file:
-        dictionary.append(str(word.lower()[:-1]))
-
-    alphabet = list(string.ascii_lowercase)
-
-    bad_letters = [n for n in alphabet if n not in seven_letters]
     correct_words = []
 
     for word in dictionary:
@@ -28,13 +29,14 @@ def spelling_butterfly(seven_letters, center_letter):
             if word not in correct_words:
                 if len(word) > 3:
                     if not any(n in bad_letters for n in word):
-                        if '.' not in word and '-' not in word:
+                        if "." not in word and "-" not in word and "'" not in word:
                             correct_words.append(word)
 
     return correct_words
 
 
-print(spelling_butterfly(seven_letters, center_letter))
+correct_words = spelling_butterfly(seven_letters, center_letter)
+print(correct_words)
 
 # New window code
 # Window of Rules #
@@ -67,7 +69,8 @@ win.mainloop()
 
 
 correct_guesses = []
-if guess in correct_words:
+guess = input("Write here")
+if guess in dictionary:
     if center_letter not in guess:
         print("Missing center letter")
     elif len(guess) > 3:
