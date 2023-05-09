@@ -1,43 +1,40 @@
+import string
+import random
+
+# sets up dictionary of all possible words
 dictionary_file = open("words.txt", "r")
 
-# print("Data type before reconstruction : ", type(data))
-	
-# js = json.loads(data)
+# generate letters
+letter_generator = string.ascii_lowercase
+seven_letters = random.sample(letter_generator, k=7)
+center_letter = random.choice(seven_letters)
 
-# print("Data type after reconstruction : ", type(js))
-# print(js)
+# create answer function
 
 
-dictionary = []
-for word in dictionary_file:
-    dictionary.append(str(word.lower()[:-1]))
+def spelling_butterfly(seven_letters, center_letter):
 
-import string
-alphabet = list(string.ascii_lowercase)
+    dictionary = []
+    for word in dictionary_file:
+        dictionary.append(str(word.lower()[:-1]))
 
-def spelling_butterfly(letters, center_letter):
-    bad_letters = [n for n in alphabet if n not in letters]
+    alphabet = list(string.ascii_lowercase)
+
+    bad_letters = [n for n in alphabet if n not in seven_letters]
     correct_words = []
 
     for word in dictionary:
         if center_letter in word:
             if word not in correct_words:
                 if len(word) > 3:
-                    if any(n in bad_letters for n in word) == False:
-                        correct_words.append(word)
+                    if not any(n in bad_letters for n in word):
+                        if '.' not in word and '-' not in word:
+                            correct_words.append(word)
 
     return correct_words
 
-#To git commmit and push, type the following lines into your terminal
-# git add -A
-# git commit -m "any messsage you want"
-# git push
 
-#If your partner pushes code
-# git pull
-
-#If you have made any changes but you do not want to push them
-# git stash #
+print(spelling_butterfly(seven_letters, center_letter))
 
 # Window of Rules #
 from tkinter import *
@@ -51,8 +48,10 @@ label.pack()
 label.mainloop()
 # move window center
 winWidth = window.winfo_reqwidth()
-winwHeight = window.winfo_reqheight()
+winHeight = window.winfo_reqheight()
 posRight = int(window.winfo_screenwidth() / 2 - winWidth / 2)
-posDown = int(window.winfo_screenheight() / 2 - winwHeight / 2)
+posDown = int(window.winfo_screenheight() / 2 - winHeight / 2)
 window.geometry("+{}+{}".format(posRight, posDown))
 window.mainloop()
+
+# gameplay
