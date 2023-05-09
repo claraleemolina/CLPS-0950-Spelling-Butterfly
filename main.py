@@ -65,7 +65,7 @@ canvas.pack()
 win.mainloop()
 
 
-# gameplay
+# gameplay rough draft
 
 
 correct_guesses = []
