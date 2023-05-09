@@ -1,15 +1,11 @@
-dictionary_file = open("[path to words.txt file]", "r")
-import json
+dictionary_file = open("words.txt", "r")
 
-with open('dictionary.txt') as f:
-	data = f.read()
-
-print("Data type before reconstruction : ", type(data))
+# print("Data type before reconstruction : ", type(data))
 	
-js = json.loads(data)
+# js = json.loads(data)
 
-print("Data type after reconstruction : ", type(js))
-print(js)
+# print("Data type after reconstruction : ", type(js))
+# print(js)
 
 
 dictionary = []
@@ -31,3 +27,32 @@ def spelling_butterfly(letters, center_letter):
                         correct_words.append(word)
 
     return correct_words
+
+#To git commmit and push, type the following lines into your terminal
+# git add -A
+# git commit -m "any messsage you want"
+# git push
+
+#If your partner pushes code
+# git pull
+
+#If you have made any changes but you do not want to push them
+# git stash #
+
+# Window of Rules #
+from tkinter import *
+window = Tk()
+window.title("Game Rules")
+window.configure(bg='white')
+window.mainloop()
+import Tkinter as Tk
+label = Tk.Label(None, text='Blah blah blah', font=('Times', '18'),fg='blue')
+label.pack()
+label.mainloop()
+# move window center
+winWidth = window.winfo_reqwidth()
+winwHeight = window.winfo_reqheight()
+posRight = int(window.winfo_screenwidth() / 2 - winWidth / 2)
+posDown = int(window.winfo_screenheight() / 2 - winwHeight / 2)
+window.geometry("+{}+{}".format(posRight, posDown))
+window.mainloop()
