@@ -62,6 +62,17 @@ correct_words = spelling_butterfly(seven_letters, center_letter)
 print(correct_words)
 
 
+# assigning points to words
+points_correct_words = []
+for word in correct_words:
+    points_correct_words.append(len(word))
+
+total_possible_points = sum(points_correct_words)
+
+print(points_correct_words)
+print(total_possible_points)
+
+
 # gameplay rough draft
 correct_guesses = []
 while len(correct_guesses) < len(correct_words):
