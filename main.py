@@ -32,6 +32,28 @@ def spelling_butterfly(seven_letters, center_letter):
 correct_words = spelling_butterfly(seven_letters, center_letter)
 print(correct_words)
 
+
+# gameplay rough draft
+correct_guesses = []
+while len(correct_guesses) < len(correct_words):
+    guess = input("Write guess ")
+
+    if str(guess) in web2lowerset:
+        if str(center_letter) not in str(guess):
+            print("Missing center letter")
+        elif len(guess) < 3:
+            print("Too short")
+        elif any(n in bad_letters for n in str(guess)):
+            print("Bad letters")
+        elif str(guess) in correct_guesses:
+            print("Already found")
+        elif str(guess) in correct_words:
+            print("Good!")
+            correct_guesses.append(str(guess))
+            print(correct_guesses)
+    else:
+        print("Not in word list")
+
 # New window code
 # Window of Rules #
 
@@ -57,28 +79,3 @@ canvas.pack()
 
 
 win.mainloop()
-
-
-# gameplay rough draft
-
-
-correct_guesses = []
-while len(correct_guesses) < len(correct_words):
-    guess = input("Write guess ")
-
-    if str(guess) in web2lowerset:
-        print(str("I am in dict"))
-        if str(center_letter) not in str(guess):
-            print("Missing center letter")
-        elif len(guess) < 3:
-            print("Too short")
-        elif any(n in bad_letters for n in str(guess)):
-            print("Bad letters")
-        elif str(guess) in correct_guesses:
-            print("Already found")
-        elif str(guess) in correct_words:
-            print("Good!")
-            correct_guesses.append(str(guess))
-            print(correct_guesses)
-    else:
-        print("Not in word list")
