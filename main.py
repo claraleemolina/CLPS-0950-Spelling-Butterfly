@@ -1,6 +1,22 @@
 import english_words
 import random
 
+# Window of Rules #
+from tkinter import *
+
+root = Tk()
+root.geometry("300x200")
+
+w = Label(root, text ='GeeksForGeeks', font = "50")
+w.pack()
+	
+msg = Message( root, text = "A computer science portal for geeks")
+	
+msg.pack()
+
+root.mainloop()
+
+
 # sets up dictionary of all possible words
 web2lowerset = english_words.get_english_words_set(['web2'], lower=True)
 
@@ -54,12 +70,3 @@ while len(correct_guesses) < len(correct_words):
     else:
         print("Not in word list")
 
-# Window of Rules #
-import tkinter as tk
-from tkinter.scrolledtext import ScrolledText
-root = tk.Tk()
-root.title("Game Rules")
-st = ScrolledText(root, width=50,  height=10)
-st.pack(fill=tk.BOTH, side=tk.LEFT, expand=True)
-
-root.mainloop()
