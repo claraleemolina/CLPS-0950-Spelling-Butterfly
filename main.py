@@ -1,36 +1,30 @@
-import string
+import english_words
 import random
 
 # sets up dictionary of all possible words
-dictionary_file = open("words.txt", "r")
+web2lowerset = english_words.get_english_words_set(['web2'], lower=True)
 
 # generate letters
-letter_generator = string.ascii_lowercase
-seven_letters = random.sample(letter_generator, k=7)
+vowels = ['a', 'e', 'i', 'o', 'u', 'y']
+consonants = ['b', 'c', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'm', 'n', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'z']
+seven_letters = random.sample(vowels, k=2) + random.sample(consonants, k=5)
 center_letter = random.choice(seven_letters)
 print(seven_letters, center_letter)
 
 # create answer function
-
-dictionary = []
-for word in dictionary_file:
-    dictionary.append(str(word.lower()[:-1]))
-
-alphabet = list(string.ascii_lowercase)
-
+alphabet = vowels + consonants
 bad_letters = [n for n in alphabet if n not in seven_letters]
 
 
 def spelling_butterfly(seven_letters, center_letter):
     correct_words = []
 
-    for word in dictionary:
+    for word in web2lowerset:
         if center_letter in word:
             if word not in correct_words:
                 if len(word) > 3:
                     if not any(n in bad_letters for n in word):
-                        if "." not in word and "-" not in word and "'" not in word:
-                            correct_words.append(word)
+                        correct_words.append(word)
 
     return correct_words
 
@@ -69,16 +63,22 @@ win.mainloop()
 
 
 correct_guesses = []
-guess = input("Write here")
-if guess in dictionary:
-    if center_letter not in guess:
-        print("Missing center letter")
-    elif len(guess) > 3:
-        print("Too short")
-    elif not any(n in bad_letters for n in guess) and 'n' not in guess and '-' not in guess:
-        print("Bad letters")
+while len(correct_guesses) < len(correct_words):
+    guess = input("Write guess ")
+
+    if str(guess) in web2lowerset:
+        print(str("I am in dict"))
+        if str(center_letter) not in str(guess):
+            print("Missing center letter")
+        elif len(guess) < 3:
+            print("Too short")
+        elif any(n in bad_letters for n in str(guess)):
+            print("Bad letters")
+        elif str(guess) in correct_guesses:
+            print("Already found")
+        elif str(guess) in correct_words:
+            print("Good!")
+            correct_guesses.append(str(guess))
+            print(correct_guesses)
     else:
-        print("Good!")
-        correct_guesses.append(guess)
-else:
-    print("Not in word list")
+        print("Not in word list")
