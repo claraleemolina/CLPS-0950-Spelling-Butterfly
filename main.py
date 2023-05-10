@@ -7,15 +7,14 @@ from tkinter import *
 root = Tk()
 root.geometry("300x200")
 
-w = Label(root, text ='GeeksForGeeks', font = "50")
+w = Label(root, text='GeeksForGeeks', font="50")
 w.pack()
-	
-msg = Message( root, text = "A computer science portal for geeks")
-	
+
+msg = Message(root, text="A computer science portal for geeks")
+
 msg.pack()
 
 root.mainloop()
-
 
 # sets up dictionary of all possible words
 web2lowerset = english_words.get_english_words_set(['web2'], lower=True)
@@ -44,25 +43,12 @@ def spelling_butterfly(seven_letters, center_letter):
 
     return correct_words
 
-# within spelling_butterfly function?
-# length of each item in correct_words is equal to its point value
-#   points_correct_words = []
-#   map len(word) in correct_words onto points_correct_words
-# where does points_correct_words fit into everything?
-# sum of total points divided by number of items in correct_words determines ranks
-# must have a way to pool ranks together if total number of words is very small
-#   possibly a loop - if number of items in correct_words is _, then fewer ranks?
-# length of each guess in correct_guesses is equal to its point value
-# affirmation based on word length
-#   words of length 4 result in 'Good!'
-#   words of length 5 result in 'Nice!'
-#   words of length 6 and above result in 'Amazing!'
 
 correct_words = spelling_butterfly(seven_letters, center_letter)
 print(correct_words)
 
 
-# assigning points to words
+# assigning points to all possible words
 points_correct_words = []
 for word in correct_words:
     points_correct_words.append(len(word))
@@ -71,6 +57,15 @@ total_possible_points = sum(points_correct_words)
 
 print(points_correct_words)
 print(total_possible_points)
+
+
+# rank assignments
+# if no possible points, no ranks
+# if possible points are less than 9, then reach rank of butterfly after all points acquired
+# if possible points are greater than 9,
+#   divide total possible points by 9
+#   divvy up ranks by rounding to nearest point value of division
+#   if word causes a move-up in more than one rank, only display the highest rank
 
 
 # gameplay rough draft
@@ -94,3 +89,19 @@ while len(correct_guesses) < len(correct_words):
     else:
         print("Not in word list")
 
+
+# assigning points to all guessed words; must figure out how to embed this within gameplay
+points_correct_guesses = []
+for guess in correct_guesses:
+    points_correct_guesses.append(len(guess))
+
+total_guessed_points = sum(points_correct_guesses)
+
+print(points_correct_guesses)
+print(total_guessed_points)
+
+
+# affirmation based on word length
+#   words of length 4 result in 'Good!'
+#   words of length 5 result in 'Nice!'
+#   words of length 6 and above result in 'Amazing!'
