@@ -54,28 +54,12 @@ while len(correct_guesses) < len(correct_words):
     else:
         print("Not in word list")
 
-# New window code
 # Window of Rules #
+import tkinter as tk
+from tkinter.scrolledtext import ScrolledText
+root = tk.Tk()
+root.title("Game Rules")
+st = ScrolledText(root, width=50,  height=10)
+st.pack(fill=tk.BOTH, side=tk.LEFT, expand=True)
 
-
-from tkinter import *
-
-
-#Create an instance of tkinter frame
-win= Tk()
-
-
-#Set the geometry
-win.geometry("750x280")
-
-
-#Create a canvas object
-canvas= Canvas(win, width= 1000, height= 750, bg="white")
-
-
-#Add a text in Canvas
-canvas.create_text(300, 50, text="GAME RULES", fill="black", font=('Helvetica 15 bold'))
-canvas.pack()
-
-
-win.mainloop()
+root.mainloop()
