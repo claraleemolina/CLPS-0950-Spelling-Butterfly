@@ -44,6 +44,19 @@ def spelling_butterfly(seven_letters, center_letter):
 
     return correct_words
 
+# within spelling_butterfly function?
+# length of each item in correct_words is equal to its point value
+#   points_correct_words = []
+#   map len(word) in correct_words onto points_correct_words
+# where does points_correct_words fit into everything?
+# sum of total points divided by number of items in correct_words determines ranks
+# must have a way to pool ranks together if total number of words is very small
+#   possibly a loop - if number of items in correct_words is _, then fewer ranks?
+# length of each guess in correct_guesses is equal to its point value
+# affirmation based on word length
+#   words of length 4 result in 'Good!'
+#   words of length 5 result in 'Nice!'
+#   words of length 6 and above result in 'Amazing!'
 
 correct_words = spelling_butterfly(seven_letters, center_letter)
 print(correct_words)
