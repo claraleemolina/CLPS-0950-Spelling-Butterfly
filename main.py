@@ -58,6 +58,15 @@ total_possible_points = sum(points_correct_words)
 print(points_correct_words)
 print(total_possible_points)
 
+# assigning points to all possible words
+points_correct_words = []
+for word in correct_words:
+    points_correct_words.append(len(word))
+
+total_possible_points = sum(points_correct_words)
+
+print(points_correct_words)
+print(total_possible_points)
 
 # rank assignments
 # if no possible points, no ranks
