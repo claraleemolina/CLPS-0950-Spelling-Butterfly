@@ -58,15 +58,20 @@ total_possible_points = sum(points_correct_words)
 print(points_correct_words)
 print(total_possible_points)
 
-# assigning points to all possible words
-points_correct_words = []
-for word in correct_words:
-    points_correct_words.append(len(word))
+points_per_rank = floor(total_possible_points / 9)
+remainder = total_possible_points % 9
+rank1 = points_per_rank * 1
+rank2 = points_per_rank * 2
+rank3 = points_per_rank * 3
+rank4 = points_per_rank * 4
+rank5 = points_per_rank * 5
+rank6 = points_per_rank * 6
+rank7 = points_per_rank * 7
+rank8 = points_per_rank * 8
+rank9= points_per_rank * 9 + remainder
 
-total_possible_points = sum(points_correct_words)
-
-print(points_correct_words)
-print(total_possible_points)
+print(points_per_rank, remainder)
+print(rank1, rank2, rank3, rank4, rank5, rank6, rank7, rank8, rank9)
 
 # rank assignments
 # if no possible points, no ranks
