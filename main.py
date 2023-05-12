@@ -1,6 +1,7 @@
 import english_words
 import random
 from math import floor
+from PIL import Image
 
 # sets up dictionary of all possible words
 web2lowerset = english_words.get_english_words_set(['web2'], lower=True)
@@ -45,6 +46,7 @@ def main():
         print(points_correct_words)
         print(total_possible_points)
 
+        # ranking system
         points_per_rank = floor(total_possible_points / 9)
         remainder = total_possible_points % 9
         rank1 = points_per_rank * 1
@@ -60,29 +62,38 @@ def main():
         print(points_per_rank, remainder)
         print(rank1, rank2, rank3, rank4, rank5, rank6, rank7, rank8, rank9)
 
+        # assigning ranks based on points
         if total_guessed_points == rank1 or (total_guessed_points < rank2 and total_guessed_points > rank1):
-            print("i am rank 1!")
+            im = Image.open("/Users/claraleemolina/PycharmProject/CLPS-0950-Spelling-Butterfly/rank1.png")
+            im.show()
         elif total_guessed_points == rank2 or (total_guessed_points < rank3 and total_guessed_points > rank2):
-            print("i am rank 2!")
+            im = Image.open("/Users/claraleemolina/PycharmProject/CLPS-0950-Spelling-Butterfly/rank2.png")
+            im.show()
         elif total_guessed_points == rank3 or (total_guessed_points < rank4 and total_guessed_points > rank3):
-            print("i am rank 3!")
+            im = Image.open("/Users/claraleemolina/PycharmProject/CLPS-0950-Spelling-Butterfly/rank3.png")
+            im.show()
         elif total_guessed_points == rank4 or (total_guessed_points < rank5 and total_guessed_points > rank4):
-            print("i am rank 4!")
+            im = Image.open("/Users/claraleemolina/PycharmProject/CLPS-0950-Spelling-Butterfly/rank4.png")
+            im.show()
         elif total_guessed_points == rank5 or (total_guessed_points < rank6 and total_guessed_points > rank5):
-            print("i am rank 5!")
+            im = Image.open("/Users/claraleemolina/PycharmProject/CLPS-0950-Spelling-Butterfly/rank5.png")
+            im.show()
         elif total_guessed_points == rank6 or (total_guessed_points < rank7 and total_guessed_points > rank6):
-            print("i am rank 6!")
+            im = Image.open("/Users/claraleemolina/PycharmProject/CLPS-0950-Spelling-Butterfly/rank6.png")
+            im.show()
         elif total_guessed_points == rank7 or (total_guessed_points < rank8 and total_guessed_points > rank7):
-            print("i am rank 7!")
+            im = Image.open("/Users/claraleemolina/PycharmProject/CLPS-0950-Spelling-Butterfly/rank7.png")
+            im.show()
         elif total_guessed_points == rank8 or (total_guessed_points < rank9 and total_guessed_points > rank8):
-            print("i am rank 8!")
+            im = Image.open("/Users/claraleemolina/PycharmProject/CLPS-0950-Spelling-Butterfly/rank8.png")
+            im.show()
         elif total_guessed_points == rank9:
-            print("i am rank 9!")
+            im = Image.open("/Users/claraleemolina/PycharmProject/CLPS-0950-Spelling-Butterfly/rank9.png")
+            im.show()
         else:
-            print(" i am rankless")
+            print("Keep playing to level up!")
 
-
-    # gameplay rough draft
+    # game loop
     correct_guesses = []
     while len(correct_guesses) < len(correct_words):
         guess = input("Write guess ")
@@ -103,7 +114,7 @@ def main():
         else:
             print("Not in word list")
 
-        # assigning points to all guessed words; must figure out how to embed this within gameplay
+        # assigning points to all guessed words
         points_correct_guesses = []
         for guess in correct_guesses:
             points_correct_guesses.append(len(guess))
