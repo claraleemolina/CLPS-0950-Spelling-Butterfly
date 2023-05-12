@@ -10,8 +10,7 @@ web2lowerset = english_words.get_english_words_set(['web2'], lower=True)
 def main():
     # generate letters, driver: Clara, observer: Bella
     vowels = ['a', 'e', 'i', 'o', 'u', 'y']
-    consonants = ['b', 'c', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'm', 'n', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x',
-                  'z']
+    consonants = ['b', 'c', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'm', 'n', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'z']
     seven_letters = random.sample(vowels, k=2) + random.sample(consonants, k=5)
     center_letter = random.choice(seven_letters)
     print(seven_letters, center_letter)
