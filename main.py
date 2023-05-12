@@ -3,12 +3,12 @@ import random
 from math import floor
 from PIL import Image
 
-# sets up dictionary of all possible words
+# sets up dictionary of all possible words, driver: Bella, observer: Clara
 web2lowerset = english_words.get_english_words_set(['web2'], lower=True)
 
 
 def main():
-    # generate letters
+    # generate letters, driver: Bella, observer: Clara
     vowels = ['a', 'e', 'i', 'o', 'u', 'y']
     consonants = ['b', 'c', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'm', 'n', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x',
                   'z']
@@ -16,7 +16,7 @@ def main():
     center_letter = random.choice(seven_letters)
     print(seven_letters, center_letter)
 
-    # create answer function
+    # create answer function, driver: Bella, observer: Clara
     alphabet = vowels + consonants
     bad_letters = [n for n in alphabet if n not in seven_letters]
 
@@ -36,7 +36,7 @@ def main():
     print(correct_words)
 
     def points_assign():
-        # assigning points to all possible words
+        # assigning points to all possible words, driver: CLara, observer: Bella
         points_correct_words = []
         for word in correct_words:
             points_correct_words.append(len(word))
@@ -46,7 +46,7 @@ def main():
         print(points_correct_words)
         print(total_possible_points)
 
-        # ranking system
+        # ranking system, driver: CLara, observer: Bella
         points_per_rank = floor(total_possible_points / 9)
         remainder = total_possible_points % 9
         rank1 = points_per_rank * 1
@@ -62,7 +62,7 @@ def main():
         print(points_per_rank, remainder)
         print(rank1, rank2, rank3, rank4, rank5, rank6, rank7, rank8, rank9)
 
-        # assigning ranks based on points
+        # assigning ranks based on points, driver: CLara, observer: Bella
         if total_guessed_points == rank1 or (total_guessed_points < rank2 and total_guessed_points > rank1):
             im = Image.open("/Users/claraleemolina/PycharmProject/CLPS-0950-Spelling-Butterfly/rank1.png")
             im.show()
@@ -93,7 +93,7 @@ def main():
         else:
             print("Keep playing to level up!")
 
-    # game loop
+    # game loop, driver: Bella, observer: Clara
     correct_guesses = []
     while len(correct_guesses) < len(correct_words):
         guess = input("Write guess ")
@@ -114,7 +114,7 @@ def main():
         else:
             print("Not in word list")
 
-        # assigning points to all guessed words
+        # assigning points to all guessed words, driver: Clara, observer: Bella
         points_correct_guesses = []
         for guess in correct_guesses:
             points_correct_guesses.append(len(guess))
