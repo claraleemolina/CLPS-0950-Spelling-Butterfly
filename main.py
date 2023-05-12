@@ -1,16 +1,12 @@
 import english_words
 import random
 from math import floor
-import cv2
-import PIL
-import tkinter as tk
 
-
+# sets up dictionary of all possible words
 web2lowerset = english_words.get_english_words_set(['web2'], lower=True)
 
 
 def main():
-    # sets up dictionary of all possible words
     # generate letters
     vowels = ['a', 'e', 'i', 'o', 'u', 'y']
     consonants = ['b', 'c', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'm', 'n', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x',
@@ -59,26 +55,31 @@ def main():
         rank6 = points_per_rank * 6
         rank7 = points_per_rank * 7
         rank8 = points_per_rank * 8
-        rank9= points_per_rank * 9 + remainder
+        rank9 = points_per_rank * 9 + remainder
 
         print(points_per_rank, remainder)
         print(rank1, rank2, rank3, rank4, rank5, rank6, rank7, rank8, rank9)
 
-        if total_guessed_points == rank1 or (total_guessed_points < rank2 and total_guessed_points>rank1):
+        if total_guessed_points == rank1 or (total_guessed_points < rank2 and total_guessed_points > rank1):
             print("i am rank 1!")
-        elif total_guessed_points == rank2:
+        elif total_guessed_points == rank2 or (total_guessed_points < rank3 and total_guessed_points > rank2):
             print("i am rank 2!")
+        elif total_guessed_points == rank3 or (total_guessed_points < rank4 and total_guessed_points > rank3):
+            print("i am rank 3!")
+        elif total_guessed_points == rank4 or (total_guessed_points < rank5 and total_guessed_points > rank4):
+            print("i am rank 4!")
+        elif total_guessed_points == rank5 or (total_guessed_points < rank6 and total_guessed_points > rank5):
+            print("i am rank 5!")
+        elif total_guessed_points == rank6 or (total_guessed_points < rank7 and total_guessed_points > rank6):
+            print("i am rank 6!")
+        elif total_guessed_points == rank7 or (total_guessed_points < rank8 and total_guessed_points > rank7):
+            print("i am rank 7!")
+        elif total_guessed_points == rank8 or (total_guessed_points < rank9 and total_guessed_points > rank8):
+            print("i am rank 8!")
+        elif total_guessed_points == rank9:
+            print("i am rank 9!")
         else:
             print(" i am rankless")
-
-
-    # rank assignments
-    # if no possible points, no ranks
-    # if possible points are less than 9, then reach rank of butterfly after all points acquired
-    # if possible points are greater than 9,
-    #   divide total possible points by 9
-    #   divvy up ranks by rounding to nearest point value of division
-    #   if word causes a move-up in more than one rank, only display the highest rank
 
 
     # gameplay rough draft
@@ -102,9 +103,6 @@ def main():
         else:
             print("Not in word list")
 
-
-
-
         # assigning points to all guessed words; must figure out how to embed this within gameplay
         points_correct_guesses = []
         for guess in correct_guesses:
@@ -116,11 +114,6 @@ def main():
         print(total_guessed_points)
 
         points_assign()
-
-# affirmation based on word length
-#   words of length 4 result in 'Good!'
-#   words of length 5 result in 'Nice!'
-#   words of length 6 and above result in 'Amazing!'
 
 if __name__ == "__main__":
     main()
